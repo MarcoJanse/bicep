@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "parEnvironment": {
+        "value": "shd"
+      },
+      "parPlatform": {
+        "value": "pltf"
+      },
+      "parLocation": {
+        "value": "westeurope"
+      },
+      "parApplicationName": {
+        "value": "mgmt"
+      },
+      "parTags": {
+        "value": {
+          "Application": "Azure Landing Zone - Platform",
+          "Deployment": "Bicep",
+          "Environment": "shared",
+          "Owner": "Marco Janse",
+          "RoleDescription": "Platform management"
+        }
+      }
+    }
+  }
