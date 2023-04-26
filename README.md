@@ -1,2 +1,3 @@
-# bicep
-Bicep modules and templates primarily used for my Azure lab
+# Bicep
+
+Bicep modules and orchestration templates primarily used for my Azure lab.
