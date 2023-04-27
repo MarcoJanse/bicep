@@ -1,0 +1,169 @@
+// **parameters**
+
+@description('Provide the environment abbreviation this resource belongs to, like dev or prd')
+@allowed([
+  'dev'
+  'tst'
+  'acc'
+  'prd'
+  'shd'
+])
+param parEnvironment string
+
+@description('Provide the Azure region this resource will be deployed to. By default it uses the resource group location')
+param parLocation string
+
+@description('Provide the application name that will be used to generate the resource group name')
+param parApplicationName string
+
+@description('The name of the Virtual Network (vNet) to reference')
+param parVnetName string
+
+param parVmName string = 'vm${parApplicationName}${parEnvironment}${padLeft(1, 2, '0')}'
+
+@allowed([
+  'standard_B2s'
+  'standard_DS1_v2'
+  'standard_D2s_v3'
+  'standard_D4s_v3'
+])
+param parVmSize string = 'standard_B2s'
+
+@allowed([
+  'Dynamic'
+  'Static'
+])
+param parVmIpAllocationMethod string
+
+@allowed([
+  'Premium_LRS'
+  'Premium_ZRS'
+  'PremiumV2_LRS'
+  'Standard_LRS'
+  'StandardSSD_LRS'
+  'StandardSSD_ZRS'
+  'UltraSSD_LRS'
+])
+param parVmOsDiskSku string = 'Premium_LRS'
+
+@allowed([
+  'detach'
+  'delete'
+])
+param parVmOsDiskDeleteOption string
+
+@description('Look at the available image offers using "Get-AzVMImagePublisher"')
+@allowed([
+  'Canonical'
+  'MicrosoftWindowsDesktop'
+  'MicrosoftWindowsServer'
+])
+param parVmOsDiskImagePublisher string = 'MicrosoftWindowsServer'
+
+@description('Look at the available image offers using "Get-AzVMImageOffer"')
+@allowed([
+  'WindowsServer'
+])
+param parVmOsDiskImageOffer string = 'WindowsServer'
+
+@description('')
+@allowed([
+  '2022-datacenter-azure-edition'
+  '2022-datacenter-azure-edition-core'
+  '2022-datacenter-azure-edition-core-smalldisk'
+  '2019-Datacenter'
+  '2019-datacenter-core-g2'
+  '2019-datacenter-core-smalldisk-g2'
+])
+param parVmOsDiskImageSku string
+
+param parVmDataDiskRequired bool
+
+param parVmDataDiskSize int
+
+@allowed([
+  'Premium_LRS'
+  'Premium_ZRS'
+  'PremiumV2_LRS'
+  'Standard_LRS'
+  'StandardSSD_LRS'
+  'StandardSSQ_ZRS'
+  'UltraSSD_LRS'
+])
+param parVmDataDiskSku string
+
+param parVmDataDiskZone string
+
+@description('This creates a tags object that can be used in parent Bicep file to add tags')
+param parTags object = {}
+
+// **resources**
+
+resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
+  name: parVnetName
+}
+
+resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-01' = {
+  name: 'nic-${parVmName}-${padLeft(1, 2, '0')}'
+  location: parLocation
+  properties: {
+    ipConfigurations: [
+      {
+        name: 'ipconfig1'
+        properties: {
+          subnet: {
+            id: parSubnetReference
+          }
+          privateIPAllocationMethod: parVmIpAllocationMethod
+        }
+      }
+    ]
+    enableAcceleratedNetworking: parNicEnableAccelleratedNetworking
+    networkSecurityGroup: {
+      id: parNsgId
+    }
+  }
+  tags: parTags
+}
+
+resource vmDataDisk 'Microsoft.Compute/disks@2022-07-02' = if (parVmDataDiskRequired) {
+  name: 'disk-${parVmName}-data-${padLeft(1, 3, '0')}'
+  location: parLocation
+  sku: {
+    name: parVmDataDiskSku
+  }
+  properties: {
+    diskSizeGB: parVmDataDiskSize
+    creationData: {
+      createOption: 'empty'
+    }
+  }
+  zones: [
+    parVmDataDiskZone
+  ]
+  tags: parTags
+}
+
+resource virtualMachine 'Microsoft.Compute/virtualMachines@2022-11-01' = {
+  name: parVmName
+  location: parLocation
+  properties: {
+    hardwareProfile: {
+      vmSize: parVmSize
+    }
+    storageProfile: {
+      osDisk: {
+        createOption: 'FromImage'
+        managedDisk: {
+          storageAccountType: parVmOsDiskSku
+        }
+        deleteOption: parVmOsDiskDeleteOption
+      }
+      imageReference: {
+        publisher: parVmOsDiskImagePublisher
+        offer: parVmOsDiskImageOffer
+        sku: parVmOsDiskImageSku
+      }
+    }
+  }
+}
