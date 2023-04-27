@@ -1,8 +1,11 @@
-
 // ** parameters**
+
+@description('Provide the name of the Network Security Group (NSG)')
 param parNsgName string
 
+@description('Provide one of more NSG security rules')
 param parNsgRules array
+
 // **resources**
 
 resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-07-01' existing = {
