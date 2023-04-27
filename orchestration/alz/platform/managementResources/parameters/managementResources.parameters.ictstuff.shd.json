@@ -14,8 +14,17 @@
       "parRegion": {
         "value": "weu"
       },
+      "parPlatformName": {
+        "value": "pltf"
+      },
       "parStoragePublicAccess": {
         "value": "Disabled"
+      },
+      "parVnetName": {
+        "value": "vnet-hub-weu"
+      },
+      "parVnetSubnetAddressPrefix": {
+        "value": "172.20.1.0/24"
       },
       "parTags": {
         "value": {
