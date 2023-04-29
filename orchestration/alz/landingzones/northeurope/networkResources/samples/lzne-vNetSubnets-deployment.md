@@ -8,8 +8,8 @@
 $inputObject = @{
   DeploymentName        = 'ictstuff-lzneNwDeploy-{0}' -f (-join (Get-Date -Format 'yyyyMMddTHHMMssffffZ')[0..63])
   ResourceGroupName     = "rg-lzne-spokenetworking-shd-001"
-  TemplateFile          = "infra-as-code\bicep\orchestration\alz\landingzones\northeurope\networkResources\lzne-vNetSubnets.bicep"
-  TemplateParameterFile = "infra-as-code\bicep\orchestration\alz\landingzones\northeurope\networkResources\parameters\lzne-vNetSubnets.parameters.ictstuff.tst.json"
+  TemplateFile          = "orchestration\alz\landingzones\northeurope\networkResources\lzne-vNetSubnets.bicep"
+  TemplateParameterFile = "orchestration\alz\landingzones\northeurope\networkResources\parameters\lzne-vNetSubnets.parameters.ictstuff.tst.json"
 }
 ```
 
