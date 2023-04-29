@@ -14,11 +14,12 @@ param parEnvironment string
 
 @description('Provide the content for deployment, like "pltf" for platform, lzxx for landingzone country or "app" for application')
 @allowed([
-  'pltf'
-  'lznl'
   'app'
+  'pltf'
+  'lzne'
+  'lzde'
 ])
-param parPlatform string
+param parPlatformName string
 
 @description('Provide the Azure region this resource will be deployed to.')
 param parLocation string
@@ -36,11 +37,11 @@ param parTags object = {}
 module ResourceGroup '../../../../modules/resourceGroup/resourceGroup.bicep' = {
   name: '${deployment().name}-rgDeploy'
   params: {
-    parResourceGroupName: 'rg-${parPlatform}-${parApplicationName}-${parEnvironment}-${padLeft(1, 3, '0')}'
+    parResourceGroupName: 'rg-${parPlatformName}-${parApplicationName}-${parEnvironment}-${padLeft(1, 3, '0')}'
     parLocation: parLocation
     parEnvironment: parEnvironment
     parApplicationName: parApplicationName
-    parPlatform: parPlatform
+    parPlatformName: parPlatformName
     parTags: parTags
   }
 }

@@ -31,9 +31,10 @@ param parRegion string
 
 @description('Provide the content for deployment, like "pltf" for platform, lzxx for landingzone country or "app" for application')
 @allowed([
-  'pltf'
-  'lznl'
   'app'
+  'pltf'
+  'lzne'
+  'lzde'
 ])
 param parPlatformName string
 

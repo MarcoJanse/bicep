@@ -15,9 +15,10 @@ param parEnvironment string
 
 @description('The platform name for generating a name suitable for the naming convention')
 @allowed([
-  'pltf'
-  'lznl'
   'app'
+  'pltf'
+  'lzne'
+  'lzde'
 ])
 param parPlatformName string
 
