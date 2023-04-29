@@ -5,9 +5,9 @@
 ```powershell
 $inputObject = @{
   DeploymentName        = 'ictstuff-mgmtRgDeploy'
-  TemplateFile          = "orchestration\platform\managementResourceGroup\managementResourceGroup.bicep"
+  TemplateFile          = "orchestration\alz\platform\managementResourceGroup\managementResourceGroup.bicep"
   Location              = "westeurope"
-  TemplateParameterFile = "orchestration\platform\managementResourceGroup\parameters\managementResourceGroup.parameters.ictstuff.shd.json"
+  TemplateParameterFile = "orchestration\alz\platform\managementResourceGroup\parameters\managementResourceGroup.parameters.ictstuff.shd.json"
 }
 ```
 

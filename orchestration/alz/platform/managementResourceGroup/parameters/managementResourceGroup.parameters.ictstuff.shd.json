@@ -5,7 +5,7 @@
       "parEnvironment": {
         "value": "shd"
       },
-      "parPlatform": {
+      "parPlatformName": {
         "value": "pltf"
       },
       "parLocation": {
