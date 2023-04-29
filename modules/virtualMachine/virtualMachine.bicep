@@ -19,6 +19,11 @@ param parApplicationName string
 @description('The name of the Virtual Network (vNet) to reference')
 param parVnetName string
 
+@description('The name of the subnet the VMs network interface should be connected to')
+param parVnetSubnetName string
+
+param parNsgName string
+
 param parVmName string = 'vm${parApplicationName}${parEnvironment}${padLeft(1, 2, '0')}'
 
 @allowed([
@@ -28,6 +33,9 @@ param parVmName string = 'vm${parApplicationName}${parEnvironment}${padLeft(1, 2
   'standard_D4s_v3'
 ])
 param parVmSize string = 'standard_B2s'
+
+@description('Specify if the network interface should be enabled for accelerated networking. NOTE: the B-series VMs do not support accelerated networking')
+param parNicEnableAccelleratedNetworking bool
 
 @allowed([
   'Dynamic'
@@ -103,6 +111,10 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-09-01' existing 
   name: parVnetName
 }
 
+resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-09-01' existing = {
+  name: parNsgName
+}
+
 resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-01' = {
   name: 'nic-${parVmName}-${padLeft(1, 2, '0')}'
   location: parLocation
@@ -112,7 +124,7 @@ resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-
         name: 'ipconfig1'
         properties: {
           subnet: {
-            id: parSubnetReference
+            id: parVnetSubnetName
           }
           privateIPAllocationMethod: parVmIpAllocationMethod
         }
@@ -120,7 +132,7 @@ resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-
     ]
     enableAcceleratedNetworking: parNicEnableAccelleratedNetworking
     networkSecurityGroup: {
-      id: parNsgId
+      id: networkSecurityGroup.id
     }
   }
   tags: parTags
