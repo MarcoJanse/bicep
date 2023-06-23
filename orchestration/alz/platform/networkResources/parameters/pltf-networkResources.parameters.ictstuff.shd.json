@@ -18,7 +18,7 @@
         "value": "pltf"
       },
       "parVnetName": {
-        "value": "alz-hub-weu"
+        "value": "vnet-hub-weu"
       },
       "parVnetSubnetAddressPrefix": {
         "value": "172.20.1.0/24"
