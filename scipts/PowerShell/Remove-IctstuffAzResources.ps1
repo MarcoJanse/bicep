@@ -11,5 +11,15 @@ $ResourceGroups = 'rg-app-lzne-tst-001',
     'NetworkWatcherRG'
 
 foreach ($ResourceGroup in $ResourceGroups) {
-    Remove-AzResourceGroup -Name $ResourceGroup
+    if (Get-AzResourceGroup $ResourceGroup) {
+        try {
+            Remove-AzResourceGroup -Name $ResourceGroup
+        }    <# Action to perform if the condition is true #>
+        catch {
+            Write-Warning "ResourceGroup $ResourceGroup not found"
+        }
+    }
+    else {
+        Write-Warning "ResourceGroup $ResourceGroup not found"
+    }
 }
