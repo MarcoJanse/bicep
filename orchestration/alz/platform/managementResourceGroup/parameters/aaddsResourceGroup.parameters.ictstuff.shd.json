@@ -5,28 +5,22 @@
       "parEnvironment": {
         "value": "shd"
       },
+      "parPlatformName": {
+        "value": "app"
+      },
       "parLocation": {
         "value": "westeurope"
       },
       "parApplicationName": {
-        "value": "mgmt"
-      },
-      "parPlatformName": {
-        "value": "pltf"
-      },
-      "parVnetName": {
-        "value": "vnet-hub-weu"
-      },
-      "parVnetSubnetAddressPrefix": {
-        "value": "172.20.2.0/24"
+        "value": "aadds"
       },
       "parTags": {
         "value": {
-          "Application": "Azure Landing Zone - Platform",
+          "Application": "Azure Active Directory Domain Services",
           "Deployment": "Bicep",
           "Environment": "shared",
           "Owner": "Marco Janse",
-          "RoleDescription": "Platform management"
+          "RoleDescription": "Authentication"
         }
       }
     }

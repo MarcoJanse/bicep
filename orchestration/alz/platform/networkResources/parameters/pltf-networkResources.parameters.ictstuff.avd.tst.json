@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "parEnvironment": {
-        "value": "shd"
+        "value": "tst"
       },
       "parLocation": {
         "value": "westeurope"
       },
       "parApplicationName": {
-        "value": "mgmt"
+        "value": "avd"
       },
       "parPlatformName": {
         "value": "pltf"
@@ -18,13 +18,13 @@
         "value": "vnet-hub-weu"
       },
       "parVnetSubnetAddressPrefix": {
-        "value": "172.20.2.0/24"
+        "value": "172.20.20.0/24"
       },
       "parTags": {
         "value": {
           "Application": "Azure Landing Zone - Platform",
           "Deployment": "Bicep",
-          "Environment": "shared",
+          "Environment": "Test",
           "Owner": "Marco Janse",
           "RoleDescription": "Platform management"
         }
