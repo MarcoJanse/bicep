@@ -18,14 +18,6 @@ param parLocation string
 @maxLength(4)
 param parApplicationName string
 
-@description('The region abbreviation: neu for North Europe, weu for West Europe, wus for West US')
-@allowed([
-  'neu'
-  'weu'
-  'wus'
-])
-param parRegion string
-
 @description('Provide the content for deployment, like "pltf" for platform, lzxx for landingzone country or "app" for application')
 @allowed([
   'app'
