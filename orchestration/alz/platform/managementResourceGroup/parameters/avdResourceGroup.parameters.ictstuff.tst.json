@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "parEnvironment": {
-        "value": "shd"
+        "value": "tst"
       },
       "parPlatformName": {
         "value": "app"
@@ -12,15 +12,15 @@
         "value": "westeurope"
       },
       "parApplicationName": {
-        "value": "aadds"
+        "value": "avd"
       },
       "parTags": {
         "value": {
-          "Application": "adds",
+          "Application": "avd",
           "Deployment": "Bicep",
-          "Environment": "shared",
+          "Environment": "Test",
           "Owner": "Marco Janse",
-          "RoleDescription": "Azure Active Directory Domain Services"
+          "RoleDescription": "Azure Virtual Desktop"
         }
       }
     }
