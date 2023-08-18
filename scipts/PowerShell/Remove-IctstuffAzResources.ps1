@@ -2,24 +2,30 @@
 
 # Quick and dirty script to remove all Bicep deployed resource groups.
 
-$ResourceGroups = 'rg-app-lzne-tst-001',
-    'rg-app-mgmt-tst-001',
-    'rg-lzde-spokenetworking-shd-001',
-    'rg-lzne-spokenetworking-shd-001',
+$ResourceGroups = 
+    'rg-app-avd-tst-001',
+    'rg-app-aadds-shd-001',
     'rg-pltf-mgmt-shd-001',
     'rg-hubnetworking-shd-001',
-    'NetworkWatcherRG'
+    'NetworkWatcherRG',
+    'rg-logging-shared-001',
+    'DefaultResourceGroup-WEU'
 
 foreach ($ResourceGroup in $ResourceGroups) {
-    if (Get-AzResourceGroup $ResourceGroup) {
-        try {
-            Remove-AzResourceGroup -Name $ResourceGroup
-        }    <# Action to perform if the condition is true #>
-        catch {
-            Write-Warning "ResourceGroup $ResourceGroup not found"
+    if (Get-AzResourceGroup $ResourceGroup -ErrorVariable NotExist -ErrorAction SilentlyContinue) {
+        if ($NotExists) {
+            Write-Warning "Resource Group $ResourceGroup does not exist"
+        }
+        else {
+            try {
+                Remove-AzResourceGroup -Name $ResourceGroup
+            }
+            catch {
+                 Write-Warning $Error[0]
+            }
         }
     }
     else {
-        Write-Warning "ResourceGroup $ResourceGroup not found"
+        Write-Warning "ResourceGroup $ResourceGroup does not exist"
     }
 }
