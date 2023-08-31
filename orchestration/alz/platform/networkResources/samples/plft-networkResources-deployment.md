@@ -2,6 +2,8 @@
 
 ## Prepare hash table with parameters
 
+### Management subnet
+
 ```powershell
 $inputObject = @{
   DeploymentName        = 'ictstuff-nwDeploy-{0}' -f (-join (Get-Date -Format 'yyyyMMddTHHMMssffffZ')[0..63])
