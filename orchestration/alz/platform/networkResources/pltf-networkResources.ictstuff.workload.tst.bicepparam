@@ -4,7 +4,7 @@ param parEnvironment = 'tst'
 
 param parLocation = 'westeurope'
 
-param parApplicationName = 'workload'
+param parApplicationName = 'work'
 
 param parPlatformName = 'pltf'
 
