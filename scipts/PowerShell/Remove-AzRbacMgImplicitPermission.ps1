@@ -12,7 +12,7 @@ $mgGroups = Get-AzManagementGroup | Where-Object DisplayName -NE 'Tenant Root Gr
 [string]$upn = Read-Host -Prompt 'Enter the UserPrincipalName to remove the implicit permissions from the Management Group'
 
 $results = foreach ($mgGroup in $mgGroups) {
-    Get-AzRoleAssignment -Scope $mgGroup.Id -UserPrincipalName $upn | Where-Object Scope -ne '/'
+    Get-AzRoleAssignment -Scope $mgGroup.Id -UserPrincipalName $upn | Where-Object Scope -ne '/' | Select-Object -Unique
 }
 
 foreach ($entry in $results) {
