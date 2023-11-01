@@ -4,7 +4,7 @@ param parApplicationName = 'workload'
 
 param parEnvironment = 'tst'
 
-param parPlatformName = 'lzne'
+param parPlatformName = 'corp'
 
 param parVnetName = 'vnet-spoke-neu'
 

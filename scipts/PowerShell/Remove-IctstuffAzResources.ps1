@@ -4,10 +4,12 @@
 
 $ResourceGroups = 
     'rg-app-avd-tst-001',
+    'rg-lab-tst-001',
     'rg-app-aadds-shd-001',
     'rg-pltf-mgmt-shd-001',
     'rg-hubnetworking-shd-001',
     'NetworkWatcherRG',
+    'rg-ascexportalz-shd-001',
     'rg-logging-shared-001',
     'DefaultResourceGroup-WEU'
 
@@ -18,7 +20,7 @@ foreach ($ResourceGroup in $ResourceGroups) {
         }
         else {
             try {
-                Remove-AzResourceGroup -Name $ResourceGroup
+                Remove-AzResourceGroup -Name $ResourceGroup -Confirm:$false -Force
             }
             catch {
                  Write-Warning $Error[0]

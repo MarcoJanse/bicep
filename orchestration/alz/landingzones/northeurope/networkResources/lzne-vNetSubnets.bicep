@@ -20,8 +20,8 @@ param parLocation string = resourceGroup().location
 @allowed([
   'app'
   'pltf'
-  'lzne'
-  'lzde'
+  'corp'
+  'onln'
 ])
 param parPlatformName string
 

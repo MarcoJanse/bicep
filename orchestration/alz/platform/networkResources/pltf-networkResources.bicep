@@ -22,8 +22,8 @@ param parApplicationName string
 @allowed([
   'app'
   'pltf'
-  'lzne'
-  'lzde'
+  'corp'
+  'onln'
 ])
 param parPlatformName string
 
@@ -37,7 +37,7 @@ param parNsgName string = 'nsg-snet-${parPlatformName}-${parApplicationName}-${p
 
 var varNsgRules = [
   {
-    name: 'AllowBastionSsh'
+    name: 'AllowInboundBastionSsh'
     properties: {
       priority: '250'
       access: 'Allow'
@@ -50,7 +50,7 @@ var varNsgRules = [
     }
   }
   {
-    name: 'AllowBastionRdp'
+    name: 'AllowInboundBastionRdp'
     properties: {
       priority: '260'
       access: 'Allow'
@@ -63,7 +63,7 @@ var varNsgRules = [
     }
   }
   {
-    name: 'AllowIntraSubnetTraffic'
+    name: 'AllowInboundIntraSubnetTraffic'
     properties: {
       priority: '2048'
       access: 'Allow'
@@ -76,7 +76,7 @@ var varNsgRules = [
     }
   }
   {
-    name: 'DenyAllInbound'
+    name: 'DenyInboundAllTraffic'
     properties: {
       priority: '4096'
       access: 'Deny'

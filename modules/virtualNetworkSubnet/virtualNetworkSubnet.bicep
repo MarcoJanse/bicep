@@ -17,15 +17,15 @@ param parEnvironment string
 @allowed([
   'app'
   'pltf'
-  'lzne'
-  'lzde'
+  'corp'
+  'onln'
 ])
 param parPlatformName string
 
 @description('The name of the Virtual Network (vNet) to reference')
 param parVnetName string
 
-@description('This parameter is a wrapper for creating the keyVaultName, but can be overwritten if needed')
+@description('This parameter is a wrapper for creating the subnet name, but can be overwritten if needed')
 param parVnetSubnetName string = 'snet-${parPlatformName}-${parApplicationName}-${parEnvironment}'
 
 @description('Please provide a valid prefix for the subnet within the vNet range, like 10.20.30.0/24')
