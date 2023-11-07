@@ -11,7 +11,7 @@ foreach ($managementGroupId in $azManagementGroupIds) {
 }
 
 # Remove Azure Policy Initiatives
-Get-AzPolicySetDefinition -Custom -ManagementGroupName $mgName | Remove-AzPolicySetDefinition -Confirm:$false -Force
+Get-AzPolicySetDefinition -Custom -ManagementGroupName $mgName | Remove-AzPolicySetDefinition -Confirm:$false -Force -Verbose
 
 # Remove Azure Policy Definitions
-Get-AzPolicyDefinition -Custom -ManagementGroupName $mgName | Remove-AzPolicyDefinition -Confirm:$false -Force
+Get-AzPolicyDefinition -Custom -ManagementGroupName $mgName | Remove-AzPolicyDefinition -Confirm:$false -Force -Verbose
