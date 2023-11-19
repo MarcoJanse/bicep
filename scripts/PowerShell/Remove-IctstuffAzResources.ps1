@@ -8,9 +8,12 @@ $ResourceGroups =
     'rg-pltf-mgmt-shd-001',
     'rg-app-aadds-shd-001',
     'rg-hubnetworking-shd-001',
+    'rg-alz-connectivity',
     'NetworkWatcherRG',
     'rg-ascexportalz-shd-001',
+    'asc-export-alz',
     'rg-logging-shd-001',
+    'rg-alz-logging',
     'DefaultResourceGroup-WEU'
 
 foreach ($ResourceGroup in $ResourceGroups) {
