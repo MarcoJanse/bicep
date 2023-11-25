@@ -36,11 +36,11 @@ param parNsgId string
 
 // **resources**
 
-resource vNet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
+resource vNet 'Microsoft.Network/virtualNetworks@2023-05-01' existing = {
   name: parVnetName
 }
 
-resource vNetSubnet 'Microsoft.Network/virtualNetworks/subnets@2022-09-01' = {
+resource vNetSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-05-01' = {
   name: parVnetSubnetName
   parent: vNet
   properties: {

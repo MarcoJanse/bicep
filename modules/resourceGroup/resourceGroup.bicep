@@ -34,7 +34,7 @@ param parResourceGroupName string = 'rg-${parPlatformName}-${parApplicationName}
 
 // **resources**
 
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+resource resourceGroup 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: parResourceGroupName
   location: parLocation
   tags: parTags

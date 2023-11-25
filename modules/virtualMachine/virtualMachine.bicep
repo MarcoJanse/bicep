@@ -107,15 +107,15 @@ param parTags object = {}
 
 // **resources**
 
-resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
+resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-05-01' existing = {
   name: parVnetName
 }
 
-resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-09-01' existing = {
+resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-05-01' existing = {
   name: parNsgName
 }
 
-resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-01' = {
+resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2023-05-01' = {
   name: 'nic-${parVmName}-${padLeft(1, 2, '0')}'
   location: parLocation
   properties: {
@@ -138,7 +138,7 @@ resource vmPrimaryNetworkInterface 'Microsoft.Network/networkInterfaces@2022-09-
   tags: parTags
 }
 
-resource vmDataDisk 'Microsoft.Compute/disks@2022-07-02' = if (parVmDataDiskRequired) {
+resource vmDataDisk 'Microsoft.Compute/disks@2023-04-02' = if (parVmDataDiskRequired) {
   name: 'disk-${parVmName}-data-${padLeft(1, 3, '0')}'
   location: parLocation
   sku: {
@@ -156,7 +156,7 @@ resource vmDataDisk 'Microsoft.Compute/disks@2022-07-02' = if (parVmDataDiskRequ
   tags: parTags
 }
 
-resource virtualMachine 'Microsoft.Compute/virtualMachines@2022-11-01' = {
+resource virtualMachine 'Microsoft.Compute/virtualMachines@2023-07-01' = {
   name: parVmName
   location: parLocation
   properties: {
