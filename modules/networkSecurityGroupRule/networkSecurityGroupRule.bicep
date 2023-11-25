@@ -8,12 +8,13 @@ param parNsgRules array
 
 // **resources**
 
-resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-07-01' existing = {
+resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-05-01' existing = {
   name: parNsgName
 }
 
-resource networkSecurityGroupRules 'Microsoft.Network/networkSecurityGroups/securityRules@2022-07-01' = [for rule in parNsgRules: {
-  name: '${networkSecurityGroup}/${rule.name}'
+resource networkSecurityGroupRules 'Microsoft.Network/networkSecurityGroups/securityRules@2023-05-01' = [for rule in parNsgRules: {
+  parent: networkSecurityGroup
+  name: '${rule.name}'
   properties: {
     protocol: rule.protocol
     sourcePortRange: rule.sourcePortRange
