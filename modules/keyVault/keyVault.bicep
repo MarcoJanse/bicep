@@ -22,13 +22,19 @@ param parTags object = {}
 @description('This parameter is a wrapper for creating the keyVaultName, but can be overwritten if needed')
 param parKeyVaultName string = 'kv-${parApplicationName}-${parEnvironment}'
 
+@description('Sets the Key Vault purge protection')
+param parKeyVaultEnablePurgeProtection bool
+
+@description('Sets the Key Vault soft delete')
+param parKeyVaultEnableSoftDelete bool
+
 // **variables**
 
 var varTenantId = tenant().tenantId
 
 // **resources**
 
-resource azKeyVault 'Microsoft.KeyVault/vaults@2023-02-01' = {
+resource azKeyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: parKeyVaultName
   location: parLocation
   tags: parTags
@@ -37,6 +43,8 @@ resource azKeyVault 'Microsoft.KeyVault/vaults@2023-02-01' = {
     enabledForTemplateDeployment: true
     enabledForDiskEncryption: true
     tenantId: varTenantId
+    enablePurgeProtection: parKeyVaultEnablePurgeProtection
+    enableSoftDelete: parKeyVaultEnableSoftDelete
     accessPolicies: [
     ]
     sku: {

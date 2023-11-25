@@ -21,6 +21,12 @@ param parApplicationName string
 @description('')
 param parKeyVaultName string = 'kv-ictstuff-${parApplicationName}-${parEnvironment}'
 
+@description('Sets the Key Vault purge protection')
+param parKeyVaultEnablePurgeProtection bool
+
+@description('Sets the Key Vault soft delete')
+param parKeyVaultEnableSoftDelete bool
+
 @description('The region abbreviation: neu for North Europe, weu for West Europe, wus for West US')
 @allowed([
   'neu'
@@ -55,6 +61,8 @@ module KeyVault '../../../../modules/keyVault/keyVault.bicep' = {
     parEnvironment: parEnvironment
     parKeyVaultName: '${parKeyVaultName}-${padLeft(1, 3, '0')}'
     parLocation: parLocation
+    parKeyVaultEnablePurgeProtection: parKeyVaultEnablePurgeProtection
+    parKeyVaultEnableSoftDelete: parKeyVaultEnableSoftDelete
     parTags: parTags
   }
 }
