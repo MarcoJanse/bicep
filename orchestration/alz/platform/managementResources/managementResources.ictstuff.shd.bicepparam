@@ -8,6 +8,10 @@ param parApplicationName = 'mgmt'
 
 param parRegion = 'weu'
 
+param parKeyVaultEnablePurgeProtection = true
+
+param parKeyVaultEnableSoftDelete = true
+
 param parStoragePublicAccess = 'Disabled'
 
 param parTags = {
