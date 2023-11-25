@@ -78,14 +78,14 @@ var varStorageEnvironments = {
   }
   shd: {
     sku: {
-      name: 'Standard_GRS'
+      name: 'Standard_ZRS'
     }
   }
 }
 
 // **resources**
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: parStorageAccountName
   location: parLocation
   sku: varStorageEnvironments[parEnvironment].sku
