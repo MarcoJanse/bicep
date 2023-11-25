@@ -352,3 +352,6 @@ MigrationBackup/
 .vscode/settings.json
 
 .DS_Store
+
+# Repo specific
+_arm-templates-converted/
