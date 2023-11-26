@@ -16,11 +16,11 @@ $inputObject = @{
 ## Test deployment
 
 ```powershell
-New-AzResourceGroupDeployment @inputobject -WhatIf
+New-AzResourceGroupDeployment @inputObject -WhatIf
 ```
 
 ## Deploy and watch
 
 ```powershell
-New-AzResourceGroupDeployment @inputobject -Verbose
+New-AzResourceGroupDeployment @inputObject -Verbose
 ```

@@ -5,7 +5,7 @@
 ```powershell
 $inputObject = @{
   DeploymentName        = 'ictstuff-nwAvdDeploy-{0}' -f (-join (Get-Date -Format 'yyyyMMddTHHMMssffffZ')[0..63])
-  ResourceGroupName     = "rg-hubnetworking-shd-001"
+  ResourceGroupName     = "rg-alz-connectivity"
   TemplateFile          = "orchestration\alz\platform\networkResources\pltf-networkResources.bicep"
   TemplateParameterFile = "orchestration\alz\platform\networkResources\pltf-networkResources.ictstuff.avd.bicepparam"
 }

@@ -1,4 +1,4 @@
-using 'managementResourceGroup.bicep'
+using 'platformResourceGroup.bicep'
 
 param parEnvironment = 'tst'
 

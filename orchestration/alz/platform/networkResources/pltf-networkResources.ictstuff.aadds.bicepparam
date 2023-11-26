@@ -4,7 +4,7 @@ param parEnvironment = 'shd'
 
 param parLocation = 'westeurope'
 
-param parApplicationName = 'aadds'
+param parApplicationName = 'adds'
 
 param parPlatformName = 'pltf'
 

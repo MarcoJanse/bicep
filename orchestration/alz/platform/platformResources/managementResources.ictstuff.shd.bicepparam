@@ -1,4 +1,4 @@
-using 'managementResources.bicep'
+using 'platformResources.bicep'
 
 param parEnvironment = 'shd'
 
