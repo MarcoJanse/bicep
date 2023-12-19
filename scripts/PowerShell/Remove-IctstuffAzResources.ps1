@@ -12,6 +12,7 @@ $ResourceGroups =
     'NetworkWatcherRG',
     'rg-ascexportalz-shd-001',
     'asc-export-alz',
+    'LogAnalyticsDefaultResources',
     'rg-logging-shd-001',
     'rg-alz-logging',
     'DefaultResourceGroup-WEU'
