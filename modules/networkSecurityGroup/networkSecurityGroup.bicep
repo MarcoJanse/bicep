@@ -35,7 +35,7 @@ param parDefaulSecurityRules array = []
 
 // **resources**
 
-resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-05-01' = {
+resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
   name: parNsgName
   location: parLocation
   tags: parTags
