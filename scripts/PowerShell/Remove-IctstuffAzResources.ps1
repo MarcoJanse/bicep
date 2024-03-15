@@ -7,14 +7,11 @@ $ResourceGroups =
     'rg-lab-tst-001',
     'rg-pltf-mgmt-shd-001',
     'rg-app-aadds-shd-001',
-    'rg-hubnetworking-shd-001',
-    'rg-alz-connectivity',
+    'rg-pltf-alz-connectivity',
     'NetworkWatcherRG',
     'rg-ascexportalz-shd-001',
     'asc-export-alz',
-    'LogAnalyticsDefaultResources',
-    'rg-logging-shd-001',
-    'rg-alz-logging',
+    'rg-pltf-alz-logging',
     'DefaultResourceGroup-WEU'
 
 foreach ($ResourceGroup in $ResourceGroups) {
